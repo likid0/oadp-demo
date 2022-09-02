@@ -1,0 +1,8 @@
+apiVersion: velero.io/v1
+kind: Restore
+metadata:
+  name: pacman-restore-dm
+  namespace: openshift-adp
+spec:
+  backupName: backup-pacman-app-20220817144919
+  restorePVs: true

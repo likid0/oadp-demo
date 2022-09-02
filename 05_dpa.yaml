@@ -1,0 +1,33 @@
+apiVersion: oadp.openshift.io/v1alpha1
+kind: DataProtectionApplication
+metadata:
+  name: oadp-demo
+  namespace: openshift-adp
+spec:
+  features:
+    dataMover:
+      credentialName: dm-restic-secret
+      enable: true
+  backupLocations:
+    - velero:
+        config:
+          profile: default
+          region: us-east-1
+        credential:
+          key: cloud
+          name: cloud-credentials
+        default: true
+        objectStorage:
+          bucket: 'oadp-store'
+          prefix: velero
+        provider: aws
+  configuration:
+    restic:
+      enable: false
+    velero:
+      defaultPlugins:
+        - openshift
+        - aws
+        - csi
+      featureFlags:
+        - EnableCSI

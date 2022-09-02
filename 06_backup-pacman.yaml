@@ -1,0 +1,11 @@
+apiVersion: velero.io/v1
+kind: Backup
+metadata:
+  name: backup-pacman-app-20220817144919
+  namespace: openshift-adp
+spec:
+  hooks: {}
+  includedNamespaces:
+  - pacman
+  storageLocation: oadp-demo-1
+  ttl: 158h40m0s

@@ -1,0 +1,13 @@
+apiVersion: velero.io/v1
+kind: Schedule
+metadata:
+  name: backup-pacman-app
+  namespace: openshift-adp
+spec:
+  schedule: '49 * * * *'
+  template:
+      hooks: {}
+      includedNamespaces:
+      - pacman
+      storageLocation: oadp-demo-1
+      ttl: 720h0m0s
